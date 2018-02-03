@@ -15,7 +15,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class ShoppingBasketTest {
+public class ShoppingBasketTest extends BaseTest {
 	protected static WebDriver driver = null;
 	private WebDriverWait wait = new WebDriverWait(driver, 60);
 	private WebElement element;
@@ -45,11 +45,11 @@ public class ShoppingBasketTest {
 	public void test() throws InterruptedException {
 		// Item Page
 		givenShopperGoesOnItemPage();
-		givenShopperGoesOnShoppingBasket();
+		givenShopperGoesOnShoppingBasket(wait, driver);
 		// Shopping basket
 		givenShopperGoesOnLogin();
 		// Step 1 None member login
-		givenShopperGoesOnPaymentWithNoneMember();
+		givenShopperGoesOnPaymentWithNoneMember(driver);
 		// Credit card check
 		element = driver.findElement(By.id("payment_card_add_306273"));
 		assertThat(element.getAttribute("value"), is("10000"));
@@ -59,57 +59,12 @@ public class ShoppingBasketTest {
 	}
 	
 	private void givenShopperGoesOnItemPage(){
-		driver.get("https://item.rakuten.co.jp/soukaidrink/9000009984074/");
-	}
-	
-	private void givenShopperGoesOnShoppingBasket(){
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("button[class='cart-button checkout new-cart-button ']")));
-		element = driver.findElement(By.cssSelector("button[class='cart-button checkout new-cart-button ']"));
-		element.click();
+		driver.get(TestConfigurations.TEST_ITEM_URL_CASE_01);
 	}
 	
 	private void givenShopperGoesOnLogin(){
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input[data-shop-id='306273'")));
 		driver.findElement(By.cssSelector("input[data-shop-id='306273'")).click();
-	}
-	
-	private void givenShopperGoesOnPaymentWithNoneMember(){
-		element = driver.findElement(By.id("lname"));
-		element.sendKeys("楽天");
-		element = driver.findElement(By.id("fname"));
-		element.sendKeys("たろう");
-		element = driver.findElement(By.id("lname_kana"));
-		element.sendKeys("ラクテン");
-		element = driver.findElement(By.id("fname_kana"));
-		element.sendKeys("タロウ");
-		element = driver.findElement(By.id("zip1"));
-		element.sendKeys("140");
-		element = driver.findElement(By.id("zip2"));
-		element.sendKeys("0001");
-		element = driver.findElement(By.id("search_address_button"));
-		element.click();
-		element = driver.findElement(By.id("street"));
-		element.sendKeys("20-20");
-		element = driver.findElement(By.id("tel1"));
-		element.sendKeys("080");
-		element = driver.findElement(By.id("tel2"));
-		element.sendKeys("9090");
-		element = driver.findElement(By.id("tel3"));
-		element.sendKeys("0909");
-		element = driver.findElement(By.id("email"));
-		element.sendKeys("rakuten@rakuraku.com");
-		element = driver.findElement(By.id("confirm_email"));
-		element.sendKeys("rakuten@rakuraku.com");
-		element = driver.findElement(By.id("deliver_to11"));
-		if(!element.isSelected()){
-			element.click();
-		}
-		element = driver.findElement(By.id("memberRegist_select_off"));
-		if(!element.isSelected()){
-			element.click();
-		}
-		element = driver.findElement(By.id("submitBtn"));
-		element.click();
 	}
 	
 	// Getter
