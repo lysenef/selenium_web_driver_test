@@ -43,7 +43,7 @@ public class ShoppingBasketTest extends BaseTest {
 	}
 	
 	@Test
-	public void test() throws InterruptedException {
+	public void paymentTest() throws InterruptedException {
 		// Item Page
 		givenShopperGoesOnItemPage();
 		givenShopperGoesOnShoppingBasket(wait, driver);
@@ -70,6 +70,19 @@ public class ShoppingBasketTest extends BaseTest {
 		select.selectByValue("2020");
 		driver.findElement(By.name("card_owner")).sendKeys("Rakuten");
 		driver.findElement(By.name("addNewCard")).click();
+	}
+	
+	@Test
+	public void shippingAddressTest() throws InterruptedException {
+		// Item Page
+		givenShopperGoesOnItemPage();
+		givenShopperGoesOnShoppingBasket(wait, driver);
+		// Shopping basket
+		givenShopperGoesOnLogin();
+		// Step 1 None member login
+		givenShopperGoesOnShippingAddressWithNoneMember(driver);
+		// Add new address
+		
 	}
 	
 	private void givenShopperGoesOnItemPage(){
