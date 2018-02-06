@@ -1,4 +1,5 @@
 eclipse.preferences.version=1
 encoding//src/selenium_web_driver_test/BaseTest.java=UTF-8
 encoding//src/selenium_web_driver_test/ShoppingBasketChromeTest.java=UTF-8
+encoding//src/selenium_web_driver_test/ShoppingBasketIETest.java=UTF-8
 encoding//src/selenium_web_driver_test/ShoppingBasketTest.java=UTF-8
