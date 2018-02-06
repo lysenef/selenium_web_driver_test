@@ -92,4 +92,10 @@ public class BaseTest {
 		element = driver.findElement(By.cssSelector(TestConfigurations.ITEM_PAGE_ADD_TO_CART_BTN));
 		element.click();
 	}
+	
+	public void givenShopperGoesOnShoppingBasketForSP(WebDriverWait wait, WebDriver driver){
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(TestConfigurations.ITEM_PAGE_ADD_TO_CART_BTN_SP)));
+		element = driver.findElement(By.cssSelector(TestConfigurations.ITEM_PAGE_ADD_TO_CART_BTN_SP));
+		element.submit();
+	}
 }

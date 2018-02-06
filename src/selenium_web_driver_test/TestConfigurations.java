@@ -6,5 +6,6 @@ public class TestConfigurations {
 	public static final String TEST_SHOP_ID = "306273";
 	public static final String PAYMENT_CREDIT_CARD_ID = "10000";
 	public static final String PAYMENT_CREDIT_CARD_ID_RPP = "1";
+	public static final String ITEM_PAGE_ADD_TO_CART_BTN_SP = "#fixedCheckOut";
 	
 }
